@@ -200,5 +200,32 @@ function setup() {
 	// run the engine
 	Runner.run(runner, engine);
 
+BELOW IS BALL MOVEMENT
+
+function keyPressed() {
+	if (keyCode == UP_ARROW) {
+		var position1 = pongA.position
+		var direction1 = createVector(0, -0.05)
+		Matter.Body.applyForce(pongA, position1, direction1)
+	}
+
+	if (keyCode == DOWN_ARROW) {
+		var position2 = pongA.position
+		var direction2 = createVector(0, 0.05)
+		Matter.Body.applyForce(pongA, position2, direction2)
+	}
+	if (keyCode == LEFT_ARROW) {
+		var position3 = pongA.position
+		var direction3 = createVector(-0.05, 0)
+		Matter.Body.applyForce(pongA, position3, direction3)
+	}
+	if (keyCode == RIGHT_ARROW) {
+		var position4 = pongA.position
+		var direction4 = createVector(0.05, 0)
+		Matter.Body.applyForce(pongA, position4, direction4)
+	}
+ if (keyCode === ENTER) pause = !pause;
+}
+
 
 }
