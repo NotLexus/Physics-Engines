@@ -313,3 +313,9 @@ function draw() {
 	text("Title Here", windowWidth/2, windowHeight/2)
 	circle(mouseX, mouseY, 100)
 }
+
+
+Canvas size
+
+width: document.body.clientWidth,
+height: document.body.clientHeight,
