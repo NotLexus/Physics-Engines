@@ -116,8 +116,8 @@ if (typeof module !== 'undefined') {
     module.exports = Example.slingshot;
 }
 
-TOP IS THE ENTIRE SLINGSHOT CODE
-BELOW IS OUR GAME SO FAR WITH THE SLINGSHOT
+##TOP IS THE ENTIRE SLINGSHOT CODE
+##BELOW IS OUR GAME SO FAR WITH THE SLINGSHOT
 
 // module aliases
 var Engine = Matter.Engine,
@@ -200,7 +200,7 @@ function setup() {
 	// run the engine
 	Runner.run(runner, engine);
 
-BELOW IS BALL MOVEMENT
+##BELOW IS BALL MOVEMENT
 
 function keyPressed() {
 	if (keyCode == UP_ARROW) {
@@ -228,4 +228,88 @@ function keyPressed() {
 }
 
 
+}
+
+
+##this is mr Lams code
+
+// module aliases
+var Engine = Matter.Engine,
+	Render = Matter.Render,
+	Runner = Matter.Runner,
+	Bodies = Matter.Bodies,
+	Composite = Matter.Composite;
+
+
+let kirby;
+let runner, engine, render;
+
+
+function setup() {
+	// create a renderer
+	// create an engine
+
+	engine = Engine.create();
+	render = Render.create({
+		element: document.body,
+		engine: engine,
+		options: {
+			width: innerWidth,
+			height: innerHeight,
+			wireframes: false, // <-- important
+			background: 'rgb(244,198,198)',
+		}
+	});
+
+	// This lets use draw on the canvas using processing's (non-physics) drawing tools
+	createCanvas(windowWidth, windowHeight, render.canvas)
+
+	// create two boxes and a ground
+	var thingVertices = Matter.Vertices.fromPath('0 0 50 300 300 300 350 0 300 0 250 250 200 250 150 0')
+	var thing = Bodies.fromVertices(200, 200, thingVertices , {
+		isStatic: true,
+		render: {
+			fillStyle: '#15171F'
+		}
+	}, true)
+	var boxA = Bodies.circle(400, 300, 80, {
+		isStatic: true,
+		render: {
+			fillStyle: '#2C50D9'
+		}
+	});
+	kirby = Bodies.circle(450, 50, 80, {
+		friction: 0.5,
+		restitution: 0.5,
+		render: {
+			sprite: {
+				texture: "kirby.png",
+				xScale: 0.35,
+				yScale: 0.35
+			}
+		}
+	});
+	var ground = Bodies.rectangle(0, windowHeight - 60, windowWidth * 2, 60, {
+		isStatic: true,
+		friction: 0.05
+	});
+
+	// add all of the bodies to the world
+	Composite.add(engine.world, [kirby, thing, ground]);
+
+	// run the renderer
+	Render.run(render);
+
+	// create runner
+	runner = Runner.create();
+
+	// run the engine
+	Runner.run(runner, engine);
+}
+
+function draw() {
+	textAlign(CENTER)
+	textSize(40)
+	text("Title Here", windowWidth/2, windowHeight/2)
+	circle(mouseX, mouseY, 100)
 }
