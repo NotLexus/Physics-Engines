@@ -116,8 +116,8 @@ if (typeof module !== 'undefined') {
     module.exports = Example.slingshot;
 }
 
-##TOP IS THE ENTIRE SLINGSHOT CODE
-##BELOW IS OUR GAME SO FAR WITH THE SLINGSHOT
+## TOP IS THE ENTIRE SLINGSHOT CODE
+## BELOW IS OUR GAME SO FAR WITH THE SLINGSHOT
 
 // module aliases
 var Engine = Matter.Engine,
@@ -200,7 +200,7 @@ function setup() {
 	// run the engine
 	Runner.run(runner, engine);
 
-##BELOW IS BALL MOVEMENT
+## BELOW IS BALL MOVEMENT
 
 function keyPressed() {
 	if (keyCode == UP_ARROW) {
@@ -231,7 +231,7 @@ function keyPressed() {
 }
 
 
-##this is mr Lams code
+## this is mr Lams code
 
 // module aliases
 var Engine = Matter.Engine,
