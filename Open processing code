@@ -176,6 +176,19 @@ function setup() {
 	
 	 Composite.add(engine.world, [rock, elastic]);
 
+  Events.on(engine, 'afterUpdate', function() {
+        if (mouseConstraint.mouse.button === -1 && (rock.position.x > 190 || rock.position.y < 430)) {
+            // Limit maximum speed of current rock.
+            // if (Body.getSpeed(rock) > 45) {
+            //     Body.setSpeed(rock, 45);
+            // }
+
+            // Release current rock and add a new one.
+            rock = Bodies.polygon(170, 450, 7, 20, rockOptions);
+            Composite.add(engine.world, rock);
+            elastic.bodyB = rock;
+        }
+    });
 
 	// add mouse control
 	var mouse = Mouse.create(render.canvas),
