@@ -332,3 +332,11 @@ Canvas size
 
 width: document.body.clientWidth,
 height: document.body.clientHeight,
+
+function draw() {
+	if (!pause) {}
+}
+
+if (keyCode === ENTER) pause = !pause; {
+		if (!pause) {
+}
